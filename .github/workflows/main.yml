@@ -1,12 +1,19 @@
-name: A workflow for my Hello World file
-on: push
+name: Comment on issues
+on:
+  issues:
+    types: [opened, edited]
 
 jobs:
-  build:
-    name: Hello world action
+  comment:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - uses: ./action-a
+      - uses: actions/github-script@v3
         with:
-          MY_NAME: "Tom"
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            github.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '👋 This is a test comment'
+            })
