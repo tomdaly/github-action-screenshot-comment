@@ -1,0 +1,14 @@
+name: "Run Cypress"
+description: "Run a JavaScript file with Cypress"
+author: "tomdaly"
+
+inputs:
+  PARAM:
+    description: "Test param"
+    required: false
+    default: "index.html"
+
+runs:
+  using: "docker"
+  image: "Dockerfile"
+
