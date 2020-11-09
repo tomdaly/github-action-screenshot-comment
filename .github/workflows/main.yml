@@ -1,10 +1,11 @@
 name: Comment on issues
 on:
-  issues:
-    types: [opened, edited]
+  issue_comment:
+    types: [created, edited]
 
 jobs:
   comment:
+    if: context.comment.body == /*
     runs-on: ubuntu-latest
     steps:
       - uses: actions/github-script@v3
@@ -15,5 +16,5 @@ jobs:
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: '👋 This is a test comment'
+              body: '👋 This is a test comment - you ran a slash command'
             })
