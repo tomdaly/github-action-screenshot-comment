@@ -5,9 +5,12 @@ on:
 
 jobs:
   comment:
-    if: startsWith(github.event.comment.body, '/')
+    if: startsWith(github.event.comment.body, '/screenshot')
     runs-on: ubuntu-latest
     steps:
+      - uses: ./run-cypress
+        with:
+          COMMENT: github.event.comment.body
       - uses: actions/github-script@v3
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
@@ -16,5 +19,5 @@ jobs:
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: '👋 This is a test comment - you ran a slash command'
+              body: '📸 Took a screenshot'
             })

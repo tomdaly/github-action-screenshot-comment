@@ -1,3 +1,6 @@
-#!/bin/sh -l
+#!/bin/bash -l
 
-sh -c "echo Running JS file with param $INPUT_PARAM"
+ROUTE=${INPUT_COMMENT/\/screenshot[ ]?/}
+sh -c "echo Running Cypress with route $ROUTE"
+cd ../test-app/ || exit
+yarn cypress run --env route="$ROUTE"
