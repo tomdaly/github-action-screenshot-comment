@@ -28,8 +28,9 @@ jobs:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
             console.log(${{steps.create-comment.outputs.result}});
-            console.log(${{steps.create-comment.outputs.result.data}});
-            console.log(${{steps.create-comment.outputs.result.data.id}});
+            console.log(${{steps.create-comment.outputs.result.status}});
+            console.log(JSON.parse(${{steps.create-comment.outputs.result.data}}));
+            console.log(JSON.parse(${{steps.create-comment.outputs.result.data.id}}));
             github.issues.updateComment({
               owner: context.repo.owner,
               repo: context.repo.repo,
