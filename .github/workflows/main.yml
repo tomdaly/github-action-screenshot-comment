@@ -13,7 +13,7 @@ jobs:
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
-            github.issues.createComment({
+            return await github.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
@@ -27,10 +27,7 @@ jobs:
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
-            console.log('steps.create-comment.output.result', steps.create-comment.output.result);
-            console.log('comment_id', steps.create-comment.output.result.id);
-            console.log('context.sender.login', context.sender.login);
-            github.issues.updateComment({
+            await github.issues.updateComment({
               owner: context.repo.owner,
               repo: context.repo.repo,
               comment_id: steps.create-comment.outputs.result.id,
