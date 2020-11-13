@@ -27,7 +27,7 @@ jobs:
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
-            console.log(${{steps.create-comment.output.result}});
+            console.log(${{steps.create-comment.outputs.result}});
             github.issues.updateComment({
               owner: context.repo.owner,
               repo: context.repo.repo,
