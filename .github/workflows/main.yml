@@ -19,6 +19,7 @@ jobs:
               repo: context.repo.repo,
               body: '⌛ Getting your screenshot...'
             })
+      - uses: actions/checkout@v2
       - uses: ./run-cypress
         with:
           COMMENT: github.event.comment.body
