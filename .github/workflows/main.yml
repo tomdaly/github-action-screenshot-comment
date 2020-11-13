@@ -1,4 +1,4 @@
-name: Comment on issues
+name: Screenshot on comment
 on:
   issue_comment:
     types: [created, edited]
