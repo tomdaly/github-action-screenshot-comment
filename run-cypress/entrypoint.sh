@@ -12,7 +12,7 @@ sh -c "echo Running Cypress with route $ROUTE"
 #cd ../test-app/ || exit # uncomment line and comment below line to run locally
 cd /github/workspace/test-app || exit
 yarn install
-yarn cypress run --env route="$ROUTE"
+CYPRESS_BASE_URL="http://host.docker.internal:3000" yarn cypress run --env route="$ROUTE"
 
 date=`date +%Y%m%d`
 dateFormatted=`date -R`

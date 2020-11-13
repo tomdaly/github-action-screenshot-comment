@@ -1,3 +1,4 @@
 {
-  "trashAssetsBeforeRuns": true
+  "trashAssetsBeforeRuns": true,
+  "baseUrl": "http://localhost:3000"
 }
