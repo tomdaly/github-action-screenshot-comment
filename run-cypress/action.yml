@@ -1,0 +1,13 @@
+name: "Run Cypress"
+description: "Run a JavaScript file with Cypress"
+author: "tomdaly"
+
+inputs:
+  COMMENT:
+    description: "Comment containing optional route"
+    required: true
+
+runs:
+  using: "docker"
+  image: "Dockerfile"
+
