@@ -20,7 +20,7 @@ dateFormatted=`date -R`
 s3Bucket="tomdaly-gh-actions-test"
 fileName="screenshot.png"
 pathName="cypress/screenshots/spec.ts/$fileName"
-relativePath="/${s3Bucket}/screenshots/${fileName}"
+relativePath="/${s3Bucket}/${fileName}"
 contentType="application/octet-stream"
 stringToSign="PUT\n\n${contentType}\n${dateFormatted}\n${relativePath}"
 s3AccessKey=${MY_S3_ACCESS_KEY}
@@ -33,5 +33,5 @@ curl -X PUT -T "${pathName}" \
 -H "Date: ${dateFormatted}" \
 -H "Content-Type: ${contentType}" \
 -H "Authorization: AWS ${s3AccessKey}:${signature}" \
--L http://${s3Bucket}.s3-${region}.amazonaws.com/screenshots/${fileName} --max-redirs 1
+-L http://${s3Bucket}.s3-${region}.amazonaws.com/${fileName} --max-redirs 1
 sh -c "echo Done"
