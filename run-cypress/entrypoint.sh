@@ -1,4 +1,5 @@
 #!/bin/bash -l
+set -e
 
 ## PRIVATE S3 INFO ##
 export MY_S3_ACCESS_KEY=AKIAJ5MI2AZTQULLHJCQ
@@ -10,6 +11,7 @@ ROUTE=${INPUT_COMMENT/\/screenshot*([[:space:]])/}
 sh -c "echo Running Cypress with route $ROUTE"
 #cd ../test-app/ || exit # uncomment line and comment below line to run locally
 cd /github/workspace/test-app || exit
+yarn install
 yarn cypress run --env route="$ROUTE"
 
 date=`date +%Y%m%d`
