@@ -8,11 +8,12 @@ export MY_S3_SECRET_KEY=W3inxJaJIVs8NUaAJV1vCO3mvPMbXTAXGV2+K05d
 
 shopt -s extglob
 ROUTE=${INPUT_COMMENT/\/screenshot*([[:space:]])/}
+export CYPRESS_route=$ROUTE
 sh -c "echo Running Cypress with route $ROUTE"
 #cd ../test-app/ || exit # uncomment line and comment below line to run locally
 cd /github/workspace/test-app || exit
 yarn install
-CYPRESS_BASE_URL="http://host.docker.internal:3000" yarn cypress run --env route="$ROUTE"
+yarn test:cypress-server
 
 date=`date +%Y%m%d`
 dateFormatted=`date -R`
