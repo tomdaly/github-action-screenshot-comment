@@ -6,7 +6,6 @@ inputs:
   COMMENT:
     description: "Comment containing optional route"
     required: true
-    default: "/screenshot"
 
 runs:
   using: "docker"
