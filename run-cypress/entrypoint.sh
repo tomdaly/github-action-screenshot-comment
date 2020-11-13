@@ -8,7 +8,8 @@ export MY_S3_SECRET_KEY=W3inxJaJIVs8NUaAJV1vCO3mvPMbXTAXGV2+K05d
 shopt -s extglob
 ROUTE=${INPUT_COMMENT/\/screenshot*([[:space:]])/}
 sh -c "echo Running Cypress with route $ROUTE"
-cd ../test-app/ || exit
+#cd ../test-app/ || exit # uncomment line and comment below line to run locally
+cd /github/workspace/test-app || exit
 yarn cypress run --env route="$ROUTE"
 
 date=`date +%Y%m%d`
