@@ -28,9 +28,8 @@ jobs:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
             github.issues.updateComment({
-              issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
               comment_id: steps.create-comment.outputs.result.id,
-              body: '📸 Here's your screenshot @' + context.sender.login + '<br/>![screenshot](https://tomdaly-gh-actions-test.s3-eu-west-1.amazonaws.com/screenshot.png)'
+              body: '📸 Here's your screenshot @' + context.sender.login + ' <br/>![screenshot](https://tomdaly-gh-actions-test.s3-eu-west-1.amazonaws.com/screenshot.png)'
             })
