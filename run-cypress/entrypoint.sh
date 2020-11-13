@@ -1,5 +1,10 @@
 #!/bin/bash -l
 
+## PRIVATE S3 INFO ##
+export MY_S3_ACCESS_KEY=AKIAJ5MI2AZTQULLHJCQ
+export MY_S3_SECRET_KEY=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
+#####################
+
 shopt -s extglob
 ROUTE=${INPUT_COMMENT/\/screenshot*([[:space:]])/}
 sh -c "echo Running Cypress with route $ROUTE"
