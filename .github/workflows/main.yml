@@ -8,10 +8,8 @@ jobs:
     if: startsWith(github.event.comment.body, '/screenshot')
     runs-on: ubuntu-latest
     steps:
-      - uses: ./run-cypress
-        with:
-          COMMENT: github.event.comment.body
       - uses: actions/github-script@v3
+        id: create-comment
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
@@ -19,5 +17,19 @@ jobs:
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: '📸 Took a screenshot'
+              body: '⌛ Getting your screenshot...'
+            })
+      - uses: ./run-cypress
+        with:
+          COMMENT: github.event.comment.body
+      - uses: actions/github-script@v3
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            github.issues.updateComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              comment_id: steps.create-comment.outputs.result.id,
+              body: '📸 Here's your screenshot @' + context.sender.login + '<br/>![screenshot](https://tomdaly-gh-actions-test.s3-eu-west-1.amazonaws.com/screenshot.png)'
             })
