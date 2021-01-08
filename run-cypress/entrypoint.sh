@@ -23,8 +23,8 @@ pathName="cypress/screenshots/spec.ts/$fileName"
 relativePath="/${s3Bucket}/${fileName}"
 contentType="image/png"
 stringToSign="PUT\n\n${contentType}\n${dateFormatted}\n${relativePath}"
-s3AccessKey=${MY_S3_ACCESS_KEY}
-s3SecretKey=${MY_S3_SECRET_KEY}
+s3AccessKey=${INPUT_S3_ACCESS_KEY}
+s3SecretKey=${INPUT_S3_SECRET_KEY}
 region="eu-west-1"
 signature=`echo -en ${stringToSign} | openssl sha1 -hmac ${s3SecretKey} -binary | base64`
 sh -c "echo Uploading $fileName to S3"

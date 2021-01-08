@@ -23,6 +23,9 @@ jobs:
       - uses: ./run-cypress
         with:
           COMMENT: ${{github.event.comment.body}}
+          COMMENT_ID: ${{steps.create-comment.outputs.result.data.id}}
+          S3_ACCESS_KEY: ${{secrets.S3_ACCESS_KEY}}
+          S3_SECRET_KEY: ${{secrets.S3_SECRET_KEY}}
       - uses: actions/github-script@v3
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
