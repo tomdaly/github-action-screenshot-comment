@@ -9,16 +9,17 @@ export MY_S3_SECRET_KEY=deletedFromIamDontCheckGitHistory
 shopt -s extglob
 ROUTE=${INPUT_COMMENT/\/screenshot*([[:space:]])/}
 export CYPRESS_route=$ROUTE
-sh -c "echo Running Cypress with route $ROUTE"
-#cd ../test-app/ || exit # uncomment line and comment below line to run locally
-cd /github/workspace/test-app || exit
+export CYPRESS_commentId=$INPUT_COMMENT_ID
+sh -c "echo Running Cypress with route $CYRESS_route, commentId $CYPRESS_commentId"
+cd ../test-app/ || exit # uncomment line and comment below line to run locally
+#cd /github/workspace/test-app || exit
 yarn install
 yarn test:cypress-server
 
 date=`date +%Y%m%d`
 dateFormatted=`date -R`
 s3Bucket="tomdaly-gh-actions-test"
-fileName="screenshot.png"
+fileName="screenshot-${INPUT_COMMENT_ID}.png"
 pathName="cypress/screenshots/spec.ts/$fileName"
 relativePath="/${s3Bucket}/${fileName}"
 contentType="image/png"

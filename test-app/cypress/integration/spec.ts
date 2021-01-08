@@ -1,7 +1,8 @@
 describe('CRA', () => {
-  const takeScreenshot = () => cy.screenshot('screenshot', { scale: true });
   const route = Cypress.env('route') || "";
   const url = route // + "/index.html";
+  const fileName = 'screenshot-' + (Cypress.env('commentId') || "");
+  const takeScreenshot = () => cy.screenshot(fileName, { scale: true });
 
   it('shows main header', function () {
     cy.visit(url);
