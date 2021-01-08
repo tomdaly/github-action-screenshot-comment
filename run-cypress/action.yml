@@ -3,16 +3,16 @@ description: "Run a JavaScript file with Cypress"
 author: "tomdaly"
 
 inputs:
-  COMMENT:
+  comment:
     description: "Comment containing optional route"
     required: true
-  COMMENT_ID:
+  comment_id:
     description: "Comment ID for screenshot filename"
     required: true
-  S3_ACCESS_KEY:
+  s3_access_key:
     description: "S3 access key"
     required: true
-  S3_SECRET_KEY:
+  s3_secret_key:
     description: "S3 secret key"
     required: true
 
