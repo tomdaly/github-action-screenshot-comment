@@ -35,5 +35,5 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               comment_id: createCommentResponse.data.id,
-              body: '![screenshot](https://tomdaly-gh-actions-test.s3-eu-west-1.amazonaws.com/screenshot-'+createCommentResponse.data.id+'.png)'
+              body: '![screenshot](https://tomdaly-gh-actions-test.s3-eu-west-1.amazonaws.com/screenshot-${{github.event.comment.id}}.png)'
             });

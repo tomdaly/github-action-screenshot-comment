@@ -2,8 +2,8 @@
 set -e
 
 shopt -s extglob
-cd ../test-app/ || exit # uncomment line and comment below line to run locally
-# cd /github/workspace/test-app || exit
+# cd ../test-app/ || exit # uncomment line and comment below line to run locally
+cd /github/workspace/test-app || exit
 route=${INPUT_COMMENT/\/screenshot*([[:space:]])/}
 export CYPRESS_ROUTE=$route
 export CYPRESS_COMMENT_ID=$INPUT_COMMENT_ID
